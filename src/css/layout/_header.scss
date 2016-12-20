@@ -1,0 +1,48 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+.site-header {
+    padding: 3rem 0;
+    width: 100%;
+    display: flex;
+    align-content: stretch;
+    align-items: center;
+
+    @include medium-and-up {
+        padding: 3rem 2rem;
+        position: fixed;
+        top: 0;
+        left: 0;
+    }
+
+
+    .branding-logo {
+        padding-left: 2rem;
+        width: 50%;
+        a {
+            font-family: $heading-font-stack;
+            display: block;
+            float: left;
+            line-height: 1.1;
+        }
+        span {
+            display: block;
+            white-space: nowrap;
+        }
+        &__name {
+            font-size: 3rem;
+            font-weight: 300;
+            text-transform: uppercase;
+            color: $white;
+        }
+        &__title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-align: right;
+            color: $toryblue;
+        }
+    }
+
+}
+

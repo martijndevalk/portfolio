@@ -1,0 +1,13 @@
+// -----------------------------------------------------------------------------
+// This file contains all @font-face declarations, if any.
+// -----------------------------------------------------------------------------
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.woff2') format('woff2'),
+         url('../fonts/icomoon.ttf') format('truetype'),
+         url('../fonts/icomoon.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

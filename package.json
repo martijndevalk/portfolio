@@ -1,0 +1,46 @@
+{
+  "name": "martijn-de-valk",
+  "version": "1.0.0",
+  "description": "Martijn de Valk - Portfolio",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp default --env development",
+    "build": "gulp build --env production"
+  },
+  "dependencies": {
+    "jquery": "^3.1.1",
+    "js-cookie": "^2.1.3",
+    "picturefill": "^3.0.2",
+    "scrollmagic": "^2.0.5",
+    "susy": "^2.2.12"
+  },
+  "devDependencies": {
+    "babel-preset-es2015": "^6.16.0",
+    "browserify": "^13.1.0",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-connect": "^5.0.0",
+    "gulp-environments": "^0.1.1",
+    "gulp-file-include": "^1.0.0",
+    "gulp-html-minifier": "^0.1.8",
+    "gulp-imagemin": "^3.0.3",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^2.1.1",
+    "gulp-uglify": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.10",
+    "imagemin-pngquant": "^5.0.0",
+    "run-sequence": "^1.2.2",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "author": "martijn.de.valk",
+  "license": "ISC"
+}

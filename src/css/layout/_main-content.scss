@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the main-content of the site/application.
+// -----------------------------------------------------------------------------
+
+.pages-stack {
+
+    .page {
+        margin: 0 auto;
+        padding: 0 2rem;
+        max-width: 600px;
+        @include medium-and-up {
+            padding: 200px 4rem;
+        }
+    }
+}
+
+.title {
+    font-weight: 300;
+    font-size: 2.8rem;
+}
+
+.subtitle {
+    font-weight: 300;
+    font-size: 2.2rem;
+}
+
+.bullet-list {
+    margin: 0;
+    padding: 0 0 0 2rem;
+    li {
+
+    }
+}
+
+hr {
+    margin: 4rem 0;
+    color: $white;
+    opacity: 0.2;
+}

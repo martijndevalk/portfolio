@@ -1,0 +1,45 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// Susy settings
+$susy: (
+    columns: 12,
+    container: 1200px,
+    gutters: 1/4,
+    global-box-sizing: border-box,
+    debug: (image: hide)
+);
+
+/// Regular font family
+/// @type List
+$text-font-stack: 'Lato', serif;
+
+/// Regular font family
+/// @type List
+$heading-font-stack: 'Nunito', sans-serif;
+
+
+/// Code (monospace) font family
+/// @type List
+$code-font-stack: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+/// Colors
+/// https://www.viget.com/articles/naming-colors
+/// http://chir.ag/projects/name-that-color/
+/// @type Color
+$black                : #000000 !default;
+$white                : #ffffff !default;
+$gray                 : #888888 !default;
+$ebony                : #080f19 !default;
+$shiraz               : #C2072E !default;
+$toryblue             : #1262AC !default;
+$anakiwa              : #93d8ff !default;
+
+
+/// Icon path
+$icomoon-font-path: "fonts" !default;
+
+/// Icons
+$icon-chevron-with-circle-right: "\e900";
+

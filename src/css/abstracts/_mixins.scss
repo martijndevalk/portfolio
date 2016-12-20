@@ -1,0 +1,178 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// Sass Contexts-events
+/// https://css-tricks.com/snippets/sass/simplifying-contexts-events/
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    } @else {
+        &:hover,
+        &:active,
+        &:focus {
+            @content;
+        }
+    }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+    #{$context} & {
+        @content;
+    }
+}
+
+
+// Clearfix mixin
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+
+/// Responsive layout
+/// Breakpoints
+$medium-width: 769px;
+$large-width: 1024px;
+
+@mixin small-only {
+    @media (max-width: #{$medium-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin medium-only {
+    @media (min-width: #{$medium-width}) and (max-width: #{$large-width - 1px}) {
+        @content;
+    }
+}
+
+@mixin medium-and-up {
+    @media (min-width: #{$medium-width}) {
+        @content;
+    }
+}
+
+@mixin print {
+    @media print {
+        @content;
+    }
+}
+
+
+/// Responsive svg
+/// Padding Hack
+/// Usage: @include svg-responsive (width, height, context);
+@mixin svg-responsive($svgWidth: 1, $svgHeight: 1, $context: 100%) {
+    //collapse the container's height
+    height: 0;
+    // specify any width you want (a percentage value, basically)
+    width: $context;
+    // apply a padding using the following formula
+    // this formula makes sure the aspect ratio of the container equals that of the svg graphic
+    padding-top: ($svgHeight / $svgWidth) * $context;
+    // create positioning context for svg
+    position: relative;
+}
+
+
+// Burger
+@mixin burger($width: 30px, $height: 5px, $gutter: 3px, $color: #000, $border-radius: 0, $transition-duration: .3s) {
+    $burger-height: $height !global;
+    $burger-gutter: $gutter !global;
+
+    position: relative;
+    margin-top: $height + $gutter;
+    margin-bottom: $height + $gutter;
+
+    user-select: none;
+
+    // 1. Fixes jagged edges in Firefox, see issue #10.
+    &, &::before, &::after {
+        display: block;
+        width: $width;
+        height: $height;
+        background-color: $color;
+        outline: 1px solid transparent; // 1
+        @if $border-radius != 0 {
+            border-radius: $border-radius;
+        }
+
+        transition-property: background-color, transform;
+        transition-duration: $transition-duration;
+    }
+
+    &::before, &::after {
+        position: absolute;
+        content: "";
+    }
+
+    &::before {
+        top: -($height + $gutter);
+    }
+
+    &::after {
+        top: $height + $gutter;
+    }
+}
+
+
+// Select parts of the burger
+@mixin burger-parts {
+    &, &::before, &::after {
+        @content;
+    }
+}
+
+@mixin burger-top {
+    &::before {
+        @content;
+    }
+}
+
+@mixin burger-middle {
+    & {
+        @content;
+    }
+}
+
+@mixin burger-bottom {
+    &::after {
+        @content;
+    }
+}
+
+
+// Burger animations
+@mixin burger-to-cross($color: auto) {
+    & {
+        background-color: transparent;
+    }
+    @if ($color != auto) {
+        &::before, &::after {
+            background-color: $color;
+        }
+    }
+    &::before {
+        transform: translateY($burger-gutter + $burger-height) rotate(45deg);
+    }
+    &::after {
+        transform: translateY(-($burger-gutter + $burger-height)) rotate(-45deg);
+            }
+}

@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the footer of the site/application.
+// -----------------------------------------------------------------------------
+
+.site-footer {
+    padding: 3rem 2rem;
+    @include medium-and-up {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+    }
+}
