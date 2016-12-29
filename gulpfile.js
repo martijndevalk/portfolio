@@ -137,7 +137,7 @@ gulp.task('copy-fonts', function() {
 // Move root files to build folder
 gulp.task('move-root-files', function() {
     return gulp.src(['./src/*.ico'])
-        .pipe(gulp.dest('dist/'))
+    .pipe(gulp.dest('dist/'));
 });
 
 
