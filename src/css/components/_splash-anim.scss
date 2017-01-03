@@ -1,0 +1,16 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the splash animation.
+// -----------------------------------------------------------------------------
+
+.splash-anim {
+    width: 500px;
+    height: 300px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    fill: $shiraz;
+    .svg-container {
+        @include svg-responsive (324px, 242px, 100%);
+    }
+}
