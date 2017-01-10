@@ -3,7 +3,7 @@
 // -----------------------------------------------------------------------------
 
 .splash-anim {
-    width: 500px;
+    width: 800px;
     height: 300px;
     transform: translate(-50%, -50%);
     position: absolute;
@@ -11,6 +11,6 @@
     left: 50%;
     fill: $shiraz;
     .svg-container {
-        @include svg-responsive (324px, 242px, 100%);
+        @include svg-responsive (925px, 188px, 100%);
     }
 }
