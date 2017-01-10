@@ -1,9 +1,8 @@
 var gulp                = require('gulp'),
-    babel               = require('gulp-babel'),
     fileinclude         = require('gulp-file-include'),
-    htmlmin             = require('gulp-html-minifier'),
     runSequence         = require('run-sequence'),
     browserify          = require('browserify'),
+    babelify            = require('babelify'),
     source              = require('vinyl-source-stream'),
     buffer              = require('vinyl-buffer'),
     rename              = require('gulp-rename'),
@@ -18,53 +17,40 @@ var gulp                = require('gulp'),
     imageminPngquant    = require('imagemin-pngquant'),
     notify              = require('gulp-notify'),
     plumber             = require('gulp-plumber'),
-    connect             = require('gulp-connect'),
+    browserSync         = require('browser-sync').create(),
     watch               = require('gulp-watch');
-
-/*  TODO
-    Automatically load any gulp plugins in your package.json
-var gulp = require('gulp');
-var gulpLoadPlugins = require('gulp-load-plugins');
-var plugins = gulpLoadPlugins({
-    pattern: ['gulp-*', 'gulp.*'],
-    scope: 'devDependencies'
-});
-*/
 
 var dev  = environments.development,
     prod = environments.production;
 
-
-// Javascript
-// Transpiling ES6 Modules to CommonJS Using Babel & Gulp
-// https://goo.gl/JsElNa
+// Clean dist folder
 gulp.task('clean-temp', function () {
     return del(['./dist']);
 });
 
-gulp.task('es6-commonjs', function () {
-    return gulp.src('./src/js/**/*.js')
-    .pipe(plumber({
-        errorHandler: notify.onError("Error: <%= error.message %>")
-    }))
-    .pipe(babel({
-        presets: ['es2015']
-    }))
-    .pipe(gulp.dest('./dist/temp/js'));
-});
+// Javascript
+// Transpiling ES6 Modules to CommonJS Using Babel & Gulp
 
-gulp.task('clean-js', function () {
-    return del(['./dist/js']);
-});
-
-gulp.task('build-js', ['clean-js', 'es6-commonjs'], function () {
-    return browserify(['./dist/temp/js/entry.js']).bundle()
-    .pipe(source('entry.js'))
-    .pipe(buffer())
-    .pipe(prod(uglify()))
-    .pipe(rename('bundle.js'))
-    .pipe(gulp.dest('./dist/js'))
-    .pipe(connect.reload());
+gulp.task('build-js', function() {
+    return browserify({
+            entries: './src/js/entry.js',
+            debug: true
+        })
+        .transform('babelify', {
+            presets: ['es2015']
+        })
+        .bundle()
+        .pipe(source('entry.js'))
+        .pipe(buffer())
+        .pipe(sourcemaps.init({
+            debug: true,
+            loadMaps: true
+        }))
+        .pipe(prod(uglify()))
+        .pipe(sourcemaps.write('./maps'))
+        .pipe(rename('bundle.js'))
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(browserSync.stream());
 });
 
 
@@ -75,7 +61,8 @@ gulp.task('build-styles', function () {
         errorHandler: notify.onError("Error: <%= error.message %>")
     }))
     .pipe(sourcemaps.init({
-        debug: true
+        debug: true,
+        loadMaps: true
     }))
     .pipe(sass())
     .pipe(autoprefixer({
@@ -83,9 +70,9 @@ gulp.task('build-styles', function () {
         cascade: false
     }))
     .pipe(prod(cleanCSS()))
-    .pipe(sourcemaps.write('.'))
+    .pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload());
+    .pipe(browserSync.stream());
 });
 
 
@@ -100,7 +87,7 @@ gulp.task('build-html', function() {
         basepath: '@file'
     }))
     .pipe(gulp.dest('./dist/'))
-    .pipe(connect.reload());
+    .pipe(browserSync.stream());
 });
 
 
@@ -119,7 +106,7 @@ gulp.task('build-img', function() {
         }]
     })))
     .pipe(gulp.dest('./dist/img/'))
-    .pipe(connect.reload());
+    .pipe(browserSync.stream());
 });
 
 
@@ -130,7 +117,7 @@ gulp.task('copy-fonts', function() {
         errorHandler: notify.onError("Error: <%= error.message %>")
     }))
     .pipe(gulp.dest('./dist/fonts/'))
-    .pipe(connect.reload());
+    .pipe(browserSync.stream());
 });
 
 
@@ -141,28 +128,34 @@ gulp.task('move-root-files', function() {
 });
 
 
-// Server
-gulp.task('connect', function() {
-    connect.server({
-        root: './dist',
-        livereload: true
+// Static server
+gulp.task('browser-sync', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./dist"
+        }
     });
 });
 
 
-// Watcher
-gulp.task('watch', function() {
+// Static Server + watch files
+gulp.task('serve', ['build-js', 'build-styles', 'build-html', 'build-img'], function() {
+
+    browserSync.init({
+        server: "./dist"
+    });
+
     gulp.watch('./src/js/**/*.js', ['build-js']);
     gulp.watch('./src/css/**/*.scss', ['build-styles']);
     gulp.watch('./src/**/*.html', ['build-html']);
     gulp.watch('./src/img/**/*.+(png|gif|jpg|svg)', ['build-img']);
+
+    gulp.watch("./dist/*.html").on('change', browserSync.reload);
 });
-
-
 
 // Run
 gulp.task('default', function(callback) {
-    runSequence('clean-temp', ['build-js', 'build-styles', 'build-html', 'build-img', 'copy-fonts', 'connect', 'watch'], callback);
+    runSequence(['build-js', 'build-styles', 'build-html', 'build-img', 'copy-fonts', 'serve'], callback);
 });
 
 gulp.task('build', function(callback) {
