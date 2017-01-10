@@ -3,14 +3,16 @@
 // -----------------------------------------------------------------------------
 
 .splash-anim {
-    width: 800px;
-    height: 300px;
+    width: 1200px;
+    height: 980px;
     transform: translate(-50%, -50%);
     position: absolute;
     top: 50%;
     left: 50%;
-    fill: $shiraz;
     .svg-container {
-        @include svg-responsive (925px, 188px, 100%);
+        @include svg-responsive (1200px, 980px, 100%);
+    }
+    .svg {
+        visibility: hidden;
     }
 }
