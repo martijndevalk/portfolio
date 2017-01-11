@@ -12,12 +12,14 @@ export const splashAnim = () => {
   const tlBubbleGroup3 = new TimelineMax();
   const tlBubbleGroup4 = new TimelineMax();
   const tlBubbleGroup5 = new TimelineMax();
+  const tlBubbleGroup6 = new TimelineMax();
 
-  tlBubbleGroup1.staggerTo('#bubbleGroup1 circle', 3, {attr: {cy: 200}, repeat: -1 }, 0.6);
-  tlBubbleGroup2.staggerTo('#bubbleGroup2 circle', 3, {attr: {cy: 200}, repeat: -1 }, 0.6);
-  tlBubbleGroup3.staggerTo('#bubbleGroup3 circle', 3, {attr: {cy: 200}, repeat: -1 }, 0.6);
-  tlBubbleGroup4.staggerTo('#bubbleGroup4 circle', 3, {attr: {cy: 200}, repeat: -1 }, 0.6);
-  tlBubbleGroup5.staggerTo('#bubbleGroup5 circle', 3, {attr: {cy: 200}, repeat: -1 }, 0.6);
+  tlBubbleGroup1.staggerTo('#bubbleGroup1 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.3);
+  tlBubbleGroup2.staggerTo('#bubbleGroup2 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.6);
+  tlBubbleGroup3.staggerTo('#bubbleGroup3 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.7);
+  tlBubbleGroup4.staggerTo('#bubbleGroup4 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.4);
+  tlBubbleGroup5.staggerTo('#bubbleGroup5 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.9);
+  tlBubbleGroup6.staggerTo('#bubbleGroup6 circle', 4, {attr: {cy: 200}, repeat: -1 }, 0.2);
 
     // TweenMax.set("#motionPathB", {opacity: 0.2});
     // TweenMax.set("#motionPathE", {opacity: 0.2});
