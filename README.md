@@ -1,28 +1,30 @@
-# Installation instructions - Portfolio #
+# martijndevalk-portfolio
 
+> my personal portfolio website
 
-## Front-end installation ##
+## Build Setup
 
-1. **Install dependencies**
+``` bash
+# install dependencies
+npm install
 
-  If you don’t already have npm installed, head over to the [Node.js website](https://nodejs.org/en/) and download the relevant copy   of Node.js for your system. The npm program is included with the install of Node.js.
+# serve with hot reload at localhost:8080
+npm run dev
 
-  Once you have npm installed, open up Terminal (or Command Prompt) and enter the following command:
+# build for production with minification
+npm run build
 
-  `npm install`		
+# build for production and view the bundle analyzer report
+npm run build --report
 
-2. **Install Gulp-cli**
+# run unit tests
+npm run unit
 
-  > The Gulp command line interface.
+# run e2e tests
+npm run e2e
 
-  Install this globally and you'll have access to the gulp command anywhere on your system.
+# run all tests
+npm test
+```
 
-  `npm install -g gulp-cli`
-
-3. **Run project**
-
-  `npm run start`
-
-## Credits ##
-
-- Martijn de Valk
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
