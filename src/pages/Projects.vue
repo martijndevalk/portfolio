@@ -11,8 +11,6 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-a {
-    color: yellow;
-}
+<style lang="scss">
+
 </style>

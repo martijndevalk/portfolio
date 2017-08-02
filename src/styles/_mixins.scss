@@ -1,0 +1,131 @@
+/// Clearfix
+@mixin clearfix {
+    &::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/// Simplifying Contexts and Events
+/// Event wrapper
+/// Usage: @include on-event {}
+@mixin on-event($self: false) {
+    @if $self {
+        &,
+        &:active,
+        &:focus,
+        &:hover {
+            @content;
+        }
+    }
+
+    @else {
+        &:active,
+        &:focus,
+        &:hover {
+            @content;
+        }
+    }
+}
+
+/// Make a context based selector a little more friendly
+/// Usage: @include when-inside('.no-flexbox') {}
+@mixin when-inside($context) {
+    #{$context} & {
+        @content;
+    }
+}
+
+
+/// Sass Mediaqueries
+/// More info: https://github.com/paranoida/sass-mediaqueries
+/// Usage: scrolldown for more info
+
+// Generator
+@mixin mq($args...) {
+    $media-type: 'only screen';
+
+    $media-type-key: 'media-type';
+
+    $args: keywords($args);
+
+    $expr: '';
+
+    @if map-has-key($args, $media-type-key) {
+        $media-type: map-get($args, $media-type-key);
+
+        $args: map-remove($args, $media-type-key);
+    }
+
+    @each $key, $value in $args {
+        @if $value {
+            $expr: "#{$expr} and (#{$key}: #{$value})";
+        }
+    }
+
+    @media #{$media-type} #{$expr} {
+        @content;
+    }
+}
+
+// Screens
+@mixin screen($min, $max, $orientation: false) {
+    @include mq($min-width: $min, $max-width: $max, $orientation: $orientation) {
+        @content;
+    }
+}
+
+@mixin max-screen($max) {
+    @include mq($max-width: $max) {
+        @content;
+    }
+}
+
+@mixin min-screen($min) {
+    @include mq($min-width: $min) {
+        @content;
+    }
+}
+
+@mixin landscape() {
+    @include mq($orientation: landscape) {
+        @content;
+    }
+}
+
+@mixin portrait() {
+    @include mq($orientation: portrait) {
+        @content;
+    }
+}
+
+// Landscape only
+// @include mq($orientation: landscape) {}
+
+// Portrait only
+// @include mq($orientation: portrait) {}
+
+// Targets group of devices or just one with particular screen width and orientation (optional).
+// @include screen($xsmall, $medium, landscape) {}
+
+// If [device width] is greater than or equal to [specified #], then do {...}
+// @include min-screen($medium) {}
+
+// If [device width] is less than or equal to [specified #], then do {...}
+// @include max-screen($medium - 1) {}
+
+/// Responsive svg
+/// Padding Hack
+/// Usage: @include svg-responsive (width, height, context);
+@mixin svg-responsive($svgWidth, $svgHeight, $context: 100%) {
+    //collapse the container's height
+    height: 0;
+    // specify any width you want (a percentage value, basically)
+    width: $context;
+    // apply a padding using the following formula
+    // this formula makes sure the aspect ratio of the container equals that of the svg graphic
+    padding-top: ($svgHeight / $svgWidth) * $context;
+    // create positioning context for svg
+    position: relative;
+}

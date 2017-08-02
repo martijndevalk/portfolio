@@ -1,11 +1,11 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Home from '@/components/Home';
-import Projects from '@/components/Projects';
-import Photography from '@/components/Photography';
-import Animations from '@/components/Animations';
-import Cinemagraphs from '@/components/Cinemagraphs';
-import Videos from '@/components/Videos';
+import Home from '@/pages/Home';
+import Projects from '@/pages/Projects';
+import Photography from '@/pages/Photography';
+import Animations from '@/pages/Animations';
+import Cinemagraphs from '@/pages/Cinemagraphs';
+import Videos from '@/pages/Videos';
 
 Vue.use(Router);
 
