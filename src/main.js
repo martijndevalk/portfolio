@@ -3,6 +3,14 @@
 import Vue from 'vue';
 import App from './App';
 import router from './router';
+import svgxhr from 'webpack-svgstore-plugin/src/helpers/svgxhr';
+
+const __svg__ = {
+    path: './assets/**/*.svg',
+    name: 'assets/svg/[hash].svg'
+};
+
+svgxhr(__svg__);
 
 Vue.config.productionTip = false;
 

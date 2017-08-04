@@ -65,30 +65,30 @@ export default {
 @import '~@/styles/_variables.scss';
 @import '~@/styles/_mixins.scss';
 
-
-h1 {
-    margin: 0;
-    font-size: 4rem;
-    font-weight: 100;
-    text-transform: uppercase;
-}
-
-p {
-    margin: 0 0 1rem;
-    font-weight: 300;
-}
-
 .introduction {
     padding: 2rem 0;
     display: grid;
     grid-template-columns: 2fr 3fr 2fr 2fr;
-    grid-gap: 20px;
+    grid-gap: 40px;
     align-content: center;
     background-color: $light-gray;
 }
 
 article {
     grid-column: 2/3;
+    h1 {
+        margin: 0 0 1rem;
+        font-size: 4rem;
+        font-weight: 200;
+        text-transform: uppercase;
+    }
+
+    p {
+        margin: 0 0 1rem;
+        font-weight: 300;
+        font-size: 1.2rem;
+        line-height: 1.6;
+    }
 }
 
 .duotone {
@@ -98,6 +98,7 @@ article {
     overflow: hidden;
     border: 5px solid $white;
     grid-column: 3/4;
+    align-self: center;
     svg {
         color-interpolation-filters: sRGB;
     }

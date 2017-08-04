@@ -1,10 +1,11 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
+var path = require('path');
+var utils = require('./utils');
+var config = require('../config');
+var vueLoaderConfig = require('./vue-loader.conf');
+var SvgStore = require('webpack-svgstore-plugin');
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir);
 }
 
 module.exports = {
@@ -25,6 +26,18 @@ module.exports = {
       '@': resolve('src')
     }
   },
+  plugins: [
+      // create svgStore instance object
+      new SvgStore({
+        // svgo options
+        svgoOptions: {
+          plugins: [
+            { removeTitle: true }
+          ]
+        },
+        prefix: 'icon-'
+      })
+  ],
   module: {
     rules: [
       {

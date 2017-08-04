@@ -14,8 +14,10 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
   },
   "dependencies": {
+    "gsap": "^1.20.2",
     "vue": "^2.3.3",
-    "vue-router": "^2.6.0"
+    "vue-router": "^2.6.0",
+    "webpack-svgstore-plugin": "^4.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
@@ -93,6 +95,7 @@
   "browserslist": [
     "> 2%",
     "last 2 versions",
-    "not ie <= 8"
+    "ie >= 10",
+    "Safari >= 8"
   ]
 }
