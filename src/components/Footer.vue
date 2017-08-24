@@ -16,8 +16,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/styles/_variables.scss';
-@import '~@/styles/_mixins.scss';
 
 .app-footer {
     margin: 0 auto;

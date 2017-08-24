@@ -56,17 +56,15 @@ export default {
         }
     },
     mounted: function () {
-        this.duotone([59, 182, 217], [51, 31, 92]);
+        this.duotone([240, 14, 46], [25, 37, 80]);
     }
 };
 </script>
 
 <style lang="scss">
-@import '~@/styles/_variables.scss';
-@import '~@/styles/_mixins.scss';
 
 .introduction {
-    padding: 2rem 0;
+    padding: 6rem 0;
     display: grid;
     grid-template-columns: 2fr 3fr 2fr 2fr;
     grid-gap: 40px;

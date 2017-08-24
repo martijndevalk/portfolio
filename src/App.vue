@@ -1,9 +1,11 @@
 <template>
 <div id="app">
+    <div id="page-trans"></div>
+
     <app-header></app-header>
-    <transition name="component-fade" mode="out-in">
-        <router-view></router-view>
-    </transition>
+
+    <router-view></router-view>
+
     <app-footer></app-footer>
 </div>
 </template>
@@ -11,6 +13,7 @@
 <script>
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+
 export default {
     name: 'app',
     components: {
@@ -21,24 +24,27 @@ export default {
 </script>
 
 <style lang="scss">
-@import '~@/styles/_fonts.scss';
 
 body {
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
     height: 100vh;
+    background-color: $honeydew;
 }
 
 #app {
 
 }
 
-.component-fade-enter-active, .component-fade-leave-active {
-  transition: opacity .3s ease;
-}
-.component-fade-enter, .component-fade-leave-to
-/* .component-fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
+#page-trans {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: $queen-blue;
+    z-index: 1000;
+    transform: scaleX(0);
 }
 
 </style>
