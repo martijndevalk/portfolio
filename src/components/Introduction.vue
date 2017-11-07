@@ -29,10 +29,14 @@
 </template>
 
 <script>
+import { Power4, TimelineLite } from 'gsap';
 export default {
     data: function () {
         return {
-            duotoneElm: '.duotone'
+            duotoneElm: '.duotone',
+            showIntroTl: new TimelineLite(),
+            introHeading: '.introduction h1',
+            introParagraphs: '.introduction p'
         };
     },
     methods: {
@@ -53,10 +57,40 @@ export default {
             value = value.concat([0, 0, 0, 1, 0]);
 
             matrix.setAttribute('values', value.join(' '));
+        },
+        showIntro: function () {
+            this.showIntroTl
+                .set(this.introHeading, { y: '50%', autoAlpha: 0 })
+                .set(this.introParagraphs, { y: '50%', autoAlpha: 0 })
+                .set(this.duotoneElm, { autoAlpha: 0 })
+                .to(this.introHeading, 1, { y: '0%', autoAlpha: 1, ease: Power4.easeOut })
+                .staggerTo(this.introParagraphs, 1, { y: '0%', autoAlpha: 1, ease: Power4.easeOut }, 0.2, '-=0.6')
+                .to(this.duotoneElm, 2, { autoAlpha: 1, ease: Power4.easeOut }, '-=1.0');
+/*
+
+this.showIntroTl
+.set(introTxt, {
+    css: { position: 'fixed', top: cardPosY, left: cardPosX }
+})
+.to(newCard, 1, { y: -cardPosY, x: -cardPosX, ease: Power4.easeOut })
+.to(newCard, 1, {
+    css: { width: '100vw', height: '100vh' },
+    ease: Power4.easeOut,
+    onComplete: () => {
+        this.$router.push({
+            name: 'Card',
+            params: {
+                projectname: cardId
+            }
+        });
+    }
+});
+ */
         }
     },
     mounted: function () {
-        this.duotone([240, 14, 46], [25, 37, 80]);
+        // this.duotone([240, 14, 46], [25, 37, 80]);
+        this.showIntro();
     }
 };
 </script>
@@ -69,7 +103,6 @@ export default {
     grid-template-columns: 2fr 3fr 2fr 2fr;
     grid-gap: 40px;
     align-content: center;
-    background-color: $light-gray;
 }
 
 article {

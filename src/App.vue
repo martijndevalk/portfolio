@@ -1,10 +1,13 @@
 <template>
 <div id="app">
-    <div id="page-trans"></div>
 
     <app-header></app-header>
 
-    <router-view></router-view>
+    <main role="main">
+        <transition name="slide">
+            <router-view></router-view>
+        </transition>
+    </main>
 
     <app-footer></app-footer>
 </div>
@@ -25,26 +28,60 @@ export default {
 
 <style lang="scss">
 
+html {
+    width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
 body {
     margin: 0 auto;
     font-family: 'Lato', sans-serif;
-    height: 100vh;
-    background-color: $honeydew;
+    // overflow-x: hidden;
+    // overflow-y: scroll;
 }
 
 #app {
-
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
-#page-trans {
+main {
+    background-color: $white;
+    position: relative;
+    flex: 1;
+}
+
+.shape-overlays {
+    width: 100vw;
+    height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: $queen-blue;
-    z-index: 1000;
-    transform: scaleX(0);
+
+    path:nth-of-type(1) { fill: #c4dbea; }
+    path:nth-of-type(2) { fill: #4c688b; }
+    path:nth-of-type(3) { fill: #2e496a; }
+}
+
+.slide-leave-active,
+.slide-enter-active {
+    // background-color: $white;
+    transition: 1s;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.slide-enter {
+    transform: translate(100%, 0);
+}
+.slide-leave-to {
+    transform: translate(-100%, 0);
 }
 
 </style>

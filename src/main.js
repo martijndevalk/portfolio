@@ -4,6 +4,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import svgxhr from 'webpack-svgstore-plugin/src/helpers/svgxhr';
+import VueLazyload from 'vue-lazyload';
 
 const __svg__ = {
     path: './assets/**/*.svg',
@@ -11,6 +12,10 @@ const __svg__ = {
 };
 
 svgxhr(__svg__);
+
+Vue.use(VueLazyload, {
+    loading: './static/loading.gif'
+});
 
 Vue.config.productionTip = false;
 
