@@ -1,0 +1,12 @@
+# editorconfig.org
+# http://editorconfig.org/
+
+root = true
+
+[*]
+charset = utf-8
+
+# set indent and tab space for specific extensions
+[*]
+indent_style = space
+indent_size = 2

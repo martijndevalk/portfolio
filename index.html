@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Martijn de Valk - Personal playground</title>
+    <!-- <link rel="preload" href="src/css/style.css" as="style" onload="this.rel='stylesheet'" /> -->
+    <link rel="stylesheet" href="src/css/style.css" />
+  </head>
+  <body>
+    <div class="slider" js-hook="slider">
+      <div class="slider__slides" js-hook="slider-slides">
+        <div class="slider__slide" js-hook="slider-slide">
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/410/420?random=1" alt="" js-hook="slider-img" />
+          </div>
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/450/420?random=2" alt="" js-hook="slider-img" />
+          </div>
+        </div>
+
+        <div class="slider__slide" js-hook="slider-slide">
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/410/420?random=3" alt="" js-hook="slider-img" />
+          </div>
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/450/420?random=4" alt="" js-hook="slider-img" />
+          </div>
+        </div>
+
+        <div class="slider__slide" js-hook="slider-slide">
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/410/420?random=5" alt="" js-hook="slider-img" />
+          </div>
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/450/420?random=6" alt="" js-hook="slider-img" />
+          </div>
+        </div>
+
+        <div class="slider__slide" js-hook="slider-slide">
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/410/420?random=7" alt="" js-hook="slider-img" />
+          </div>
+          <div class="slider__slide-clip" js-hook="slider-slide-clip">
+            <img src="https://picsum.photos/450/420?random=8" alt="" js-hook="slider-img" />
+          </div>
+        </div>
+      </div>
+      <div class="slider__nav">
+        <button type="button" class="slider-button slider-button--prev" js-hook="slider-button-prev">
+          <svg class="slider-button__icon slider-button__icon--left-arrow">
+            <use href="/src/assets/images/icons/left-arrow.svg">
+          </svg>
+        </button>
+        <button type="button" class="slider-button slider-button--next" js-hook="slider-button-next">
+          <svg class="slider-button__icon slider-button__icon--right-arrow">
+            <use href="/src/assets/images/icons/right-arrow.svg">
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="video-container" js-hook="video-container">
+      <video data-prefetch="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4" muted loop playsinline></video>
+    </div>
+
+    <main js-hook="main">
+      <div class="loading">
+        <svg viewBox="0 0 839 788" js-hook="bubbles-container" xmlns="http://www.w3.org/2000/svg">
+          <rect width="839" height="788" fill="#EDF1D5" />
+
+          <g js-hook="bubbles-group" fill="#EF476F">
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+            <circle cx="419.5" cy="394.5" r="1" />
+          </g>
+        </svg>
+        <svg viewBox="0 0 74 74" class="sparkle" js-hook="sparkle-pop" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="37" cy="37" r="0" fill="none" stroke="transparent" stroke-width="30" js-hook="pop-circle" />
+          <g js-hook="pop-group" stroke="transparent" stroke-width="1" stroke-linecap="round">
+            <line x1="37" y1="37" y2="0" x2="37" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="63.16" y2="10.84" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="74" y2="37" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="63.16" y2="63.16" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="37" y2="74" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="10.84" y2="63.16" fill="none" stroke-miterlimit="10" />
+            <line x1="37" x2="0" y1="37" y2="37" fill="none" stroke-miterlimit="10" />
+            <line x1="37" y1="37" x2="10.84" y2="10.84" fill="none" stroke-miterlimit="10" />
+          </g>
+        </svg>
+      </div>
+    </main>
+
+    <script src="src/js/main.js"></script>
+  </body>
+</html>
